@@ -44,21 +44,27 @@ const getEmpleado = (id) => {
 };
 
 const getSalario = (empleat) => {
-  for (let x of salaries) {
-    if (x.id === empleat.id) {
-      return x.salary;
+  let result = new Promise((resolve, reject) => {
+    let salari;
+    for (let x of salaries) {
+      if (x.id === empleat.id) {
+        salari = x.salary;
+      }
     }
-  }
-  new Error("No s'ha trobat l'empleat");
+    salari ? resolve(salari) : reject(new Error("No s'ha trobat l'empleat"));
+  });
+
+  return result;
 };
 
 let esTrobaEmpleat = getEmpleado(2)
   .then((result) => console.log(result))
-  .catch((e) => console.log(e.message)); 
+  .catch((e) => console.log(e.message));
 
 let noEsTrobaEmpleat = getEmpleado(5)
   .then((result) => console.log(result))
   .catch((e) => console.log(e.message));
 
-let salario = getSalario(employees[1]);
-console.log('salario ', salario);
+let salario = getSalario(employees[1])
+  .then((result) => console.log("salario ", result))
+  .catch((e) => console.log(e.message));

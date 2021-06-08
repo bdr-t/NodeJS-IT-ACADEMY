@@ -33,6 +33,8 @@ let salaries = [
 
 
 //Exercici 1
+console.log('Nivell 1 Exercici 1: crear funcions getEmpleado() i getSalario()')
+
 const getEmpleado = async (id) => {
   let result = await new Promise((resolve, reject) => {
     let empleat;
@@ -63,12 +65,13 @@ const getSalario = async (empleat) => {
 
 
 getEmpleado(1).catch(e => console.log(e.message))
-getEmpleado(5).catch(e => console.log(e.message))
+getEmpleado(5).catch(e => e.message)
 getSalario(employees[0]).catch(e => console.log(e.message))
 
 
 
 //Exercici 2
+console.log('Nivell 1 exercici 2. Funció asincorna que imprimeix consola nom emplat i el seu salari')
 async function getEmpleadoSalario(id){
     const empleado = await getEmpleado(id)
     const salario = await getSalario(empleado)

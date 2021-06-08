@@ -28,7 +28,8 @@ let salaries = [
   },
 ];
 
-const getEmpleado = (id) => {
+console.log("Nivell 2 Exercici 1: funció que retorni una Promise efectuant la cerca en l'objecte pel seu id")
+export const getEmpleado = (id) => {
   let result = new Promise((resolve, reject) => {
     let empleat;
     for (let x of employees) {
@@ -42,8 +43,8 @@ const getEmpleado = (id) => {
 
   return result;
 };
-
-const getSalario = (empleat) => {
+console.log("Nivell 2 Exercici 1: funció que retorni salari")
+export const getSalario = (empleat) => {
   let result = new Promise((resolve, reject) => {
     let salari;
     for (let x of salaries) {
@@ -57,13 +58,17 @@ const getSalario = (empleat) => {
   return result;
 };
 
+
+console.log("Nivell 2 Exercici 3: s'invocaran funcions getEmplado i getSalarios")
+
 let esTrobaEmpleat = getEmpleado(2)
   .then((result) => console.log(result))
   .catch((e) => console.log(e.message));
 
+
 let noEsTrobaEmpleat = getEmpleado(5)
   .then((result) => console.log(result))
-  .catch((e) => console.log(e.message));
+  .catch((e) => console.log(e.message)); // Nivell 3. exercici 1
 
 let salario = getSalario(employees[1])
   .then((result) => console.log("salario ", result))

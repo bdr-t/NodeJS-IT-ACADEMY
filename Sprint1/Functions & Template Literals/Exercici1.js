@@ -1,7 +1,7 @@
 //Functions & Template Literals
 
 //Nivel 1
-console.log('Nivell 1')
+console.log('Nivell 1: Funció que imprimexi nom en consola. Invocada externament')
 console.log('--------')
 function imprimirNom(nom){
     console.log(nom)
@@ -11,7 +11,7 @@ imprimirNom('Bader')
 
 //Nivell 2
 console.log('--------')
-console.log('Nivell 2')
+console.log('Nivell 2: Funció que imprimeix en consola nom y cognom utilitzant template literals')
 console.log('--------')
 
 function imprimirNomCognom(nom, cognom){
@@ -23,7 +23,7 @@ imprimirNomCognom('Bader', 'Tabeche')
 
 //Nivell 3 
 console.log('--------')
-console.log('Nivell 3 Exercici 1')
+console.log("Nivell 3 Exercici 1: Matriu amb deu funciones que s'hauran d'invocar iterativament")
 console.log('--------')
 let matriu = []
 
@@ -46,7 +46,7 @@ for (let element of matriu){
 }
 
 
-console.log('Nivell 3 Exercici 2')
+console.log('Nivell 3 Exercici 2: Funció autoinovcable')
 console.log('--------')
 const autoinvocableNom = (function(nom) {
     console.log(nom);

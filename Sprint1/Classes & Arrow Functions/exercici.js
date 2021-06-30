@@ -37,17 +37,52 @@ jo.decirNombre()
 console.log('----------')
 
 //Nivell 3 
-console.log("Nivell 3: funció creadora d'objetes")
-function creadorObj(nom, cognom, edat){
-    return {
+console.log("Nivell 3: classe abstracta")
+const Persona = function() {
+    if (this.constructor === Persona) {
+      throw new Error("Can't instantiate abstract class!");
+    } 
+ 
+};
+
+Persona.prototype.dades = function() {
+    throw new Error("Abstract method!");
+}
+
+
+const Dwight = function() {
+    Persona.apply(this, arguments);
+};
+Dwight.prototype = Object.create(Persona.prototype);
+Dwight.prototype.constructor = Dwight;
+
+Dwight.prototype.dades = function(nom, cognom, edat) {
+    console.log( {
         nom : nom,
         cognom: cognom,
         edat: edat,
-    }
-
+    })
 }
 
-console.log(creadorObj('Dwight', 'Shrute', 53))
-console.log(creadorObj('Jim', 'Halpert', 43))
+const dwight = new Dwight();
 
+
+const Jim = function() {
+    Persona.apply(this, arguments);
+};
+Jim.prototype = Object.create(Persona.prototype);
+Jim.prototype.constructor = Jim;
+
+Jim.prototype.dades = function(nom, cognom, edat) {
+    console.log( {
+        nom : nom,
+        cognom: cognom,
+        edat: edat,
+    })
+}
+
+const jim = new Jim();
+
+dwight.dades('Dwight', 'Shrute', 53);
+jim.dades('Jim', 'Halpert', 43);
 

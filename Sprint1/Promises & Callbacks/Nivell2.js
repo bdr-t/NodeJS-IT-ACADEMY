@@ -30,7 +30,7 @@ let salaries = [
 
 
 const getEmpleado = (id) => {
-  let result = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let empleat;
     for (let x of employees) {
       if (x.id === id) {
@@ -41,11 +41,11 @@ const getEmpleado = (id) => {
     empleat ? resolve(empleat) : reject(new Error("No s'ha trobat l'empleat"));
   });
 
-  return result;
+
 };
 
 const getSalario = (empleat) => {
-  let result = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let salari;
     for (let x of salaries) {
       if (x.id === empleat.id) {
@@ -55,7 +55,6 @@ const getSalario = (empleat) => {
     salari ? resolve(salari) : reject(new Error("No s'ha trobat l'empleat"));
   });
 
-  return result;
 };
 
 console.log("Nivell 2 Exercici 3: s'invocaran funcions getEmplado i getSalarios")

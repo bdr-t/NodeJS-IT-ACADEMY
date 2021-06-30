@@ -2,11 +2,10 @@
 
 //Nivell 1
 console.log('Nivell 1: Imprimex consola funció autoinvocable que sumi dos nombres')
-const suma = ((x , y) =>{
+console.log(((x , y) =>{
     return x + y
     
-})(5, 7)
-console.log(suma)
+})(5, 7))
 console.log('----------')
 
 

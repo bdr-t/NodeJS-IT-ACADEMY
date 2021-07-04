@@ -28,7 +28,6 @@ let salaries = [
   },
 ];
 
-
 const getEmpleado = (id) => {
   return new Promise((resolve, reject) => {
     let empleat;
@@ -40,8 +39,6 @@ const getEmpleado = (id) => {
     }
     empleat ? resolve(empleat) : reject(new Error("No s'ha trobat l'empleat"));
   });
-
-
 };
 
 const getSalario = (empleat) => {
@@ -54,21 +51,29 @@ const getSalario = (empleat) => {
     }
     salari ? resolve(salari) : reject(new Error("No s'ha trobat l'empleat"));
   });
-
 };
 
-console.log("Nivell 2 Exercici 3: s'invocaran funcions getEmplado i getSalarios")
-console.log('-------------------')
+console.log(
+  "Nivell 2 Exercici 3: s'invocaran funcions getEmplado i getSalarios"
+);
+console.log("-------------------");
 
-let esTrobaEmpleat = getEmpleado(2)
-  .then((result) => console.log("Nivell 2 Exercici 1: funció (getEmpleado) que retorni una Promise efectuant la cerca en l'objecte pel seu id", '\n', result))
+getEmpleado(1)
+  .then((result) => {
+    console.log(`L'empleat ${result.name}`);
+    return getSalario(employees[result.id-1]);
+  })
+  .then((res) => console.log(`té un salari de ${res}`))
   .catch((e) => console.log(e.message));
 
+// getEmpleado(2)
+//   .then((result) => console.log("Nivell 2 Exercici 1: funció (getEmpleado) que retorni una Promise efectuant la cerca en l'objecte pel seu id", '\n', result))
+//   .catch((e) => console.log(e.message));
 
-let noEsTrobaEmpleat = getEmpleado(5)
-  .then((result) => console.log(result))
-  .catch((e) => console.log("Nivell 2 Exercici 1: funció (getEmpleado) que retorni una Promise efectuant la cerca en l'objecte pel seu id", '\n', e.message)); // Nivell 3. exercici 1
+// let noEsTrobaEmpleat = getEmpleado(5)
+//   .then((result) => console.log(result))
+//   .catch((e) => console.log("Nivell 2 Exercici 1: funció (getEmpleado) que retorni una Promise efectuant la cerca en l'objecte pel seu id", '\n', e.message)); // Nivell 3. exercici 1
 
-let salario = getSalario(employees[1])
-  .then((result) => console.log("Nivell 2 Exercici 1: (getSalarios) funció que retorni salari", '\n', "salario ", result))
-  .catch((e) => console.log(e.message));
+// let salario = getSalario(employees[2])
+//   .then((result) => console.log(result))
+//   .catch((e) => console.log(e.message));

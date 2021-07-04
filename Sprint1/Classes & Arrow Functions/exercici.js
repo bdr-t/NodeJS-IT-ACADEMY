@@ -38,6 +38,7 @@ console.log('----------')
 
 //Nivell 3 
 console.log("Nivell 3: classe abstracta")
+
 const Persona = function() {
     if (this.constructor === Persona) {
       throw new Error("Can't instantiate abstract class!");
@@ -45,44 +46,52 @@ const Persona = function() {
  
 };
 
-Persona.prototype.dades = function() {
-    throw new Error("Abstract method!");
-}
+
+const Dwight = Persona('Dwight', 'Shrute', 53);
+const Jim = Persona('Jim', 'Halpert', 43);
+
+console.log(Dwight)
+console.log(Jim)
+
+// Persona.prototype.dades = function() {
+//     throw new Error("Abstract method!");
+// }
+
+// const Dwight = function() {
+//     Persona.apply(this, arguments);
+// };
+
+// Dwight.prototype = Object.create(Persona.prototype);
+// Dwight.prototype.constructor = Dwight;
+
+// Dwight.prototype.dades = function(nom, cognom, edat) {
+//     console.log( {
+//         nom : nom,
+//         cognom: cognom,
+//         edat: edat,
+//     })
+// }
+
+// const dwight = new Dwight();
 
 
-const Dwight = function() {
-    Persona.apply(this, arguments);
-};
-Dwight.prototype = Object.create(Persona.prototype);
-Dwight.prototype.constructor = Dwight;
+// const Jim = function() {
+//     Persona.apply(this, arguments);
+// };
 
-Dwight.prototype.dades = function(nom, cognom, edat) {
-    console.log( {
-        nom : nom,
-        cognom: cognom,
-        edat: edat,
-    })
-}
+// Jim.prototype = Object.create(Persona.prototype);
+// Jim.prototype.constructor = Jim;
 
-const dwight = new Dwight();
+// Jim.prototype.dades = function(nom, cognom, edat) {
+//     console.log( {
+//         nom : nom,
+//         cognom: cognom,
+//         edat: edat,
+//     })
+// }
 
+// const jim = new Jim();
 
-const Jim = function() {
-    Persona.apply(this, arguments);
-};
-Jim.prototype = Object.create(Persona.prototype);
-Jim.prototype.constructor = Jim;
-
-Jim.prototype.dades = function(nom, cognom, edat) {
-    console.log( {
-        nom : nom,
-        cognom: cognom,
-        edat: edat,
-    })
-}
-
-const jim = new Jim();
-
-dwight.dades('Dwight', 'Shrute', 53);
-jim.dades('Jim', 'Halpert', 43);
+// dwight.dades('Dwight', 'Shrute', 53);
+// jim.dades('Jim', 'Halpert', 43);
 

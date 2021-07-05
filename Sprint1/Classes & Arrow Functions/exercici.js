@@ -23,7 +23,7 @@ console.log('----------')
 
 //Exercici 2
 console.log('Nivell 2 Exercici 2: classe amb parametre nom i mètode decirNombre')
-class Persona  {
+class Persona1  {
     constructor(nom){
         this.nom = nom
     }
@@ -32,7 +32,7 @@ class Persona  {
     }
 }
 
-const jo = new Persona('Bader')
+const jo = new Persona1('Bader')
 jo.decirNombre()
 console.log('----------')
 
@@ -46,52 +46,41 @@ const Persona = function() {
  
 };
 
+Persona.prototype.dades = function() {
+    throw new Error("Abstract method!");
+}
 
-const Dwight = Persona('Dwight', 'Shrute', 53);
-const Jim = Persona('Jim', 'Halpert', 43);
+const Empleat = function() {
+    Persona.apply(this, arguments);
+};
 
-console.log(Dwight)
-console.log(Jim)
+Empleat.prototype = Object.create(Persona.prototype);
+Empleat.prototype.constructor = Empleat;
 
-// Persona.prototype.dades = function() {
-//     throw new Error("Abstract method!");
-// }
+Empleat.prototype.dades = function(nom, cognom, edat) {
+    console.log( {
+        nom : nom,
+        cognom: cognom,
+        edat: edat,
+    })
+}
 
-// const Dwight = function() {
-//     Persona.apply(this, arguments);
-// };
-
-// Dwight.prototype = Object.create(Persona.prototype);
-// Dwight.prototype.constructor = Dwight;
-
-// Dwight.prototype.dades = function(nom, cognom, edat) {
-//     console.log( {
-//         nom : nom,
-//         cognom: cognom,
-//         edat: edat,
-//     })
-// }
-
-// const dwight = new Dwight();
+const dwight = new Empleat();
 
 
-// const Jim = function() {
-//     Persona.apply(this, arguments);
-// };
+Empleat.prototype = Object.create(Persona.prototype);
+Empleat.prototype.constructor = Empleat;
 
-// Jim.prototype = Object.create(Persona.prototype);
-// Jim.prototype.constructor = Jim;
+Empleat.prototype.dades = function(nom, cognom, edat) {
+    console.log( {
+        nom : nom,
+        cognom: cognom,
+        edat: edat,
+    })
+}
 
-// Jim.prototype.dades = function(nom, cognom, edat) {
-//     console.log( {
-//         nom : nom,
-//         cognom: cognom,
-//         edat: edat,
-//     })
-// }
+const jim = new Empleat();
 
-// const jim = new Jim();
-
-// dwight.dades('Dwight', 'Shrute', 53);
-// jim.dades('Jim', 'Halpert', 43);
+dwight.dades('Dwight', 'Shrute', 53);
+jim.dades('Jim', 'Halpert', 43);
 
